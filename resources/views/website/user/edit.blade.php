@@ -30,7 +30,7 @@
 
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control @error('legal_name') is-invalid @enderror"
+                                <input type="email" class="form-control @error('email') is-invalid @enderror"
                                     id="exampleInputEmail1" name="email" value="{{ $user->email }}" required>
                                 @error('email')
                                     <div class="invalid-feedback animated fadeIn">{{ $message }}</div>
