@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Exports\EmployeeExport;
+use App\Mail\EmployeeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -139,6 +141,13 @@ class EmployeeController extends Controller
         $users=$users->paginate(10);
 
         return view('home',compact('emp_id','name','query_string','users'));
+    }
+
+    public function email()
+    {
+        $user=User::where('id',1)->first();
+        Mail::to($user->email)->send(new EmployeeMail());
+        return redirect()->back();
     }
 
     /**

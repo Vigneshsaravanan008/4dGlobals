@@ -2,7 +2,7 @@
     <thead>
         <tr>
             <td><b>EmpId</b></td>
-            <td><b>User</b></td>
+            <td><b>Employee Name</b></td>
             <td><b>Email</b></td>
             <td><b>Phone</b></td>
         </tr>
@@ -20,7 +20,7 @@
                     {{ @$user->email }}
                 </td>
                 <td>
-                    {{ @$user->phone }}
+                    {{ @$user->phone_no }}
                 </td>
             </tr>
         @endforeach

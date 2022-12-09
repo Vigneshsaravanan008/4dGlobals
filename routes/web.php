@@ -32,4 +32,6 @@ Route::middleware(['web'])->group(function () {
     Route::get('/employee/export', [EmployeeController::class, 'export'])->name('employee.export');
 
     Route::get('/employee/search', [EmployeeController::class, 'search'])->name('employee.search');
+
+    Route::get('/email/send',[EmployeeController::class,'email'])->name('employee.email');
 });

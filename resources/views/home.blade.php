@@ -34,6 +34,8 @@
                                     <a href="{{ route('home')}}"
                                     class="btn btn-outline-primary mt-2" style="margin-left:10px">Clear</a>
                                 </form>
+                                <a href="{{ route('employee.email')}}"
+                                class="btn btn-outline-secondary mt-2" style="margin-left:10px">Send</a>
                                 <hr/>
                                 @if ($query_string != null)
                                     <div class="btn-group mt-2" role="group">
