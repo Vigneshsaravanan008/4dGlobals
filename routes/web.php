@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['web'])->group(function () {
+Route::middleware(['web','useractivity'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('user', EmployeeController::class);
@@ -33,5 +33,8 @@ Route::middleware(['web'])->group(function () {
 
     Route::get('/employee/search', [EmployeeController::class, 'search'])->name('employee.search');
 
+    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
     Route::get('/email/send',[EmployeeController::class,'email'])->name('employee.email');
+
 });

@@ -22,6 +22,9 @@ return new class extends Migration
             $table->integer('role_id')->comment('1:Agent;2:Supervisor');
             $table->integer('department_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('is_login')->default(0);
+            $table->timestamp('login_time')->nullable();
+            $table->timestamp('logout_time')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();

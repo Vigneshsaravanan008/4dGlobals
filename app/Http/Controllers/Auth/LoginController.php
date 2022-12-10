@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +40,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request)
+    {
+        if(Auth::user()->is_login==0)
+        {
+            User::where('id',Auth::user()->id)->update([
+                'logout_time'=>Carbon::now(),
+                'is_login'=>0
+            ]);
+        }
+
+        $this->guard('auth')->logout();
+        $request->session()->invalidate();
+        return redirect('/login');
     }
 }

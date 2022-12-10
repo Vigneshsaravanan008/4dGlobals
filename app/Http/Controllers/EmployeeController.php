@@ -6,7 +6,9 @@ use App\Exports\EmployeeExport;
 use App\Mail\EmployeeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -149,6 +151,7 @@ class EmployeeController extends Controller
         Mail::to($user->email)->send(new EmployeeMail());
         return redirect()->back();
     }
+
 
     /**
      * Remove the specified resource from storage.

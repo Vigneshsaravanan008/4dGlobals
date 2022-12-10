@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('meta-details')
+{{-- @section('meta-details')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-@endsection
+@endsection --}}
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -65,6 +65,8 @@
                                     <th scope="col">Email</th>
                                     <th scope="col">Role</th>
                                     <th scope="col">Department</th>
+                                    <th scope="col">Login Time</th>
+                                    <th scope="col">LogOut Time</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -77,6 +79,8 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role }}</td>
                                         <td>{{ $user->department }}</td>
+                                        <td>{{ ($user->login_time!=null)? Carbon\Carbon::parse($user->login_time)->format('h:i:s'):"" }}</td>
+                                        <td>{{ (($user->is_login==1)&&$user->logout_time!=null)? Carbon\Carbon::parse($user->logout_time)->format('h:i:s'):"" }}</td>
                                         <td><a class="btn btn-outline-primary"
                                                 href="{{ route('user.edit', $user->id) }}">Edit</a></td>
                                         <td> <a class="btn btn-outline-warning"
@@ -94,6 +98,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('javascript')
 @endsection
